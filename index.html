@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>StatViz — Roadmap</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,300..900;1,8..60,300..900&display=swap" rel="stylesheet" />
+
+  <script type="module" src="/src/roadmap/main.ts"></script>
+</head>
+<body>
+  <div class="roadmap-page">
+    <header class="roadmap-page__header">
+      <h1 class="roadmap-page__title">StatViz</h1>
+      <p class="roadmap-page__intro">
+        A network of carefully-explained interactive lessons in mathematical statistics,
+        building toward the DDPM paper. Click any lesson to read its description; click
+        again to open it. The amber thread traces the recommended path from foundations
+        to the paper itself.
+      </p>
+      <div class="roadmap-legend">
+        <span><span class="roadmap-legend__swatch" style="background: var(--amber);"></span>Golden thread (path to DDPM)</span>
+        <span><span class="roadmap-legend__swatch" style="background: var(--ink-soft);"></span>Required prereq</span>
+        <span><span class="roadmap-legend__swatch" style="background: var(--ink-soft); background-image: linear-gradient(to right, var(--ink-soft) 50%, transparent 50%); background-size: 8px 100%;"></span>Recommended</span>
+        <span style="color: var(--sage);">✓ Built</span>
+        <span style="color: var(--ink-soft);">○ Planned</span>
+      </div>
+    </header>
+    <div id="roadmap-root"></div>
+    <div id="roadmap-mobile"></div>
+  </div>
+  <div id="side-panel" class="side-panel"></div>
+</body>
+</html>

@@ -1,0 +1,183 @@
+/* KL & Jensen lesson-local accent tokens + viz styles. */
+
+:root {
+  --dist-p: #b8651a;
+  --dist-q: #1f6f8c;
+}
+
+/* Hook: two overlapping density curves */
+.kl-hook {
+  text-align: center;
+  padding: 5rem 1rem;
+  max-width: var(--prose-width);
+  margin: 0 auto;
+}
+
+.kl-hook__svg {
+  display: block;
+  margin: 0 auto 2rem auto;
+  width: 280px;
+  height: 100px;
+}
+
+.kl-hook__title {
+  font-family: var(--font-display);
+  font-size: 3rem;
+  font-style: italic;
+  margin-bottom: 1.5rem;
+  line-height: 1.15;
+}
+
+.kl-hook__cta { margin-top: 2rem; }
+
+/* Convex explorer */
+.convex-explorer { display: flex; flex-direction: column; gap: 0.75rem; }
+.convex-explorer__pick { display: flex; gap: 0.5rem; flex-wrap: wrap; align-items: center; }
+.convex-explorer__badge {
+  font-family: var(--font-mono);
+  font-size: 0.78em;
+  padding: 0.15em 0.5em;
+  border-radius: 999px;
+  border: 1px solid var(--rule);
+  background: var(--paper);
+  color: var(--ink-soft);
+}
+.convex-explorer__badge--convex  { color: var(--dist-p); border-color: var(--dist-p); }
+.convex-explorer__badge--concave { color: var(--dist-q); border-color: var(--dist-q); }
+
+/* Jensen-gap viz */
+.jensen-gap {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+@media (max-width: 720px) { .jensen-gap { grid-template-columns: 1fr; } }
+.jensen-gap__panel {
+  background: var(--paper-soft);
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  padding: 0.75rem;
+}
+.jensen-gap__readout {
+  font-family: var(--font-mono);
+  font-size: 0.85em;
+  margin-top: 0.5rem;
+  color: var(--ink-soft);
+}
+.jensen-gap__readout strong { color: var(--ink); }
+
+/* KL calculator */
+.kl-calc {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+@media (max-width: 720px) { .kl-calc { grid-template-columns: 1fr; } }
+
+.kl-calc__panel {
+  background: var(--paper-soft);
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  padding: 0.75rem;
+}
+.kl-calc__panel--p { border-left: 4px solid var(--dist-p); }
+.kl-calc__panel--q { border-left: 4px solid var(--dist-q); }
+
+.kl-calc__title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+.kl-calc__title--p { color: var(--dist-p); }
+.kl-calc__title--q { color: var(--dist-q); }
+
+.kl-calc__sliders { display: flex; flex-direction: column; gap: 0.35rem; }
+.kl-calc__slider-row {
+  display: flex; align-items: center; gap: 0.5em;
+  font-family: var(--font-mono); font-size: 0.85em;
+}
+.kl-calc__slider-row span { min-width: 1.5em; color: var(--ink-soft); }
+.kl-calc__readouts {
+  margin-top: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5em;
+  font-family: var(--font-mono);
+  font-size: 0.95em;
+}
+.kl-calc__readout strong { color: var(--ink); }
+.kl-calc__readout--inf { color: var(--warning); font-weight: 700; }
+.kl-calc__decomp {
+  margin-top: 0.5rem;
+  padding-top: 0.5rem;
+  border-top: 1px solid var(--rule);
+}
+.kl-calc__try {
+  margin-top: 0.75rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4em;
+}
+
+/* Bernoulli heatmap */
+.bern-heatmap { display: flex; flex-direction: column; gap: 0.5rem; }
+.bern-heatmap__controls { display: flex; gap: 0.5em; flex-wrap: wrap; }
+.bern-heatmap__readout {
+  font-family: var(--font-mono);
+  font-size: 0.85em;
+  color: var(--ink-soft);
+  min-height: 1.4em;
+}
+.bern-heatmap__readout strong { color: var(--ink); }
+
+/* Forward vs reverse fit */
+.fr-fit { display: flex; flex-direction: column; gap: 1rem; }
+.fr-fit__target {
+  background: var(--paper-soft);
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  padding: 0.75rem;
+}
+.fr-fit__pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+@media (max-width: 720px) { .fr-fit__pair { grid-template-columns: 1fr; } }
+.fr-fit__panel {
+  background: var(--paper-soft);
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  padding: 0.75rem;
+}
+.fr-fit__panel-title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+}
+.fr-fit__readout {
+  font-family: var(--font-mono);
+  font-size: 0.85em;
+  color: var(--ink-soft);
+  margin: 0.5rem 0;
+}
+.fr-fit__readout strong { color: var(--ink); }
+.fr-fit__caption {
+  font-size: 0.88rem;
+  color: var(--ink-soft);
+  font-style: italic;
+}
+.fr-fit__buttons { display: flex; flex-wrap: wrap; gap: 0.4em; margin-top: 0.5rem; }
+.fr-fit__note {
+  font-size: 0.85rem;
+  color: var(--amber);
+  margin-top: 0.5em;
+  font-style: italic;
+  min-height: 1.2em;
+}
+
+/* p curve / q curve fills */
+.kl-curve--p { fill: var(--dist-p); stroke: var(--dist-p); }
+.kl-curve--q { fill: var(--dist-q); stroke: var(--dist-q); }
+.kl-curve--p-fill { fill: var(--dist-p); fill-opacity: 0.18; stroke: var(--dist-p); }
+.kl-curve--q-fill { fill: var(--dist-q); fill-opacity: 0.22; stroke: var(--dist-q); }

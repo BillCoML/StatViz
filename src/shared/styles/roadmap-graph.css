@@ -1,0 +1,125 @@
+/* Shared roadmap graph styles — used by both the roadmap page and the
+   <RoadmapMini> component embedded in lesson summaries. */
+
+.roadmap__svg {
+  width: 100%;
+  height: auto;
+  display: block;
+  background: var(--paper-soft);
+  border: 1px solid var(--rule);
+  border-radius: 12px;
+}
+
+.roadmap__col-label,
+.roadmap__band-label {
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  fill: var(--ink-soft);
+}
+
+.roadmap__band-rule {
+  stroke: var(--rule);
+  stroke-dasharray: 4 4;
+}
+
+/* Edges */
+.roadmap__edge {
+  stroke: var(--ink-soft);
+  stroke-width: 1.4;
+  opacity: 0.55;
+  fill: none;
+  transition: opacity 0.15s, stroke-width 0.15s;
+}
+.roadmap__edge--required    { stroke-dasharray: none; }
+.roadmap__edge--recommended { stroke-dasharray: 5 4; }
+.roadmap__edge--golden {
+  stroke: var(--amber);
+  stroke-width: 3;
+  opacity: 0.85;
+}
+.roadmap--focused .roadmap__edge { opacity: 0.15; }
+.roadmap--focused .roadmap__edge--related {
+  opacity: 1;
+  stroke-width: 2.4;
+}
+
+/* Nodes */
+.roadmap__node-card {
+  fill: var(--paper);
+  stroke: var(--rule);
+  stroke-width: 1.2;
+  filter: drop-shadow(0 2px 4px var(--shadow));
+  transition: stroke 0.15s, stroke-width 0.15s, fill 0.15s;
+}
+.roadmap__node-title {
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 600;
+  fill: var(--ink);
+}
+.roadmap__node-meta {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  fill: var(--ink-soft);
+}
+.roadmap__node-subtitle {
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-style: italic;
+  fill: var(--ink-soft);
+}
+.roadmap__node-badge {
+  font-family: var(--font-mono);
+  font-size: 16px;
+  font-weight: 700;
+  fill: var(--sage);
+}
+
+.roadmap__node--planned .roadmap__node-card {
+  stroke-dasharray: 4 4;
+  fill: color-mix(in srgb, var(--paper) 70%, transparent);
+}
+.roadmap__node--planned .roadmap__node-title,
+.roadmap__node--planned .roadmap__node-subtitle,
+.roadmap__node--planned .roadmap__node-meta { opacity: 0.55; }
+.roadmap__node--planned .roadmap__node-badge { fill: var(--ink-soft); }
+
+.roadmap__node--wip .roadmap__node-badge { fill: var(--amber); }
+
+.roadmap__node--here .roadmap__node-card {
+  stroke: var(--amber);
+  stroke-width: 2.4;
+}
+.roadmap__node-here {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 700;
+  fill: var(--amber);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.roadmap__node--sidequest .roadmap__node-card {
+  fill: var(--paper-soft);
+}
+
+.roadmap__node:hover .roadmap__node-card {
+  stroke: var(--amber);
+  stroke-width: 2;
+}
+
+.roadmap--focused .roadmap__node { opacity: 0.35; }
+.roadmap--focused .roadmap__node--related,
+.roadmap--focused .roadmap__node:hover { opacity: 1; }
+
+/* Mini mode tweaks: smaller cards, smaller text. */
+.roadmap--mini { max-width: 760px; margin: 1.5rem auto; }
+.roadmap--mini .roadmap__svg {
+  background: var(--paper);
+  border-radius: 8px;
+}
+.roadmap--mini .roadmap__node-title { font-size: 11px; }
+.roadmap--mini .roadmap__node-badge { font-size: 12px; }
