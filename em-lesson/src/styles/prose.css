@@ -1,0 +1,206 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 18px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+main {
+  margin-left: 240px;
+  padding: 0 2rem;
+  max-width: calc(var(--wide-width) + 4rem);
+}
+
+@media (max-width: 1023px) {
+  main {
+    margin-left: 0;
+    padding: 0 1.25rem;
+  }
+}
+
+.section {
+  padding: var(--section-gap) 0;
+  border-bottom: 1px solid var(--rule);
+}
+
+.section:last-child {
+  border-bottom: none;
+}
+
+.prose {
+  max-width: var(--prose-width);
+  margin: 0 auto;
+}
+
+.wide {
+  max-width: var(--wide-width);
+  margin: 0 auto;
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--ink);
+  margin-bottom: 0.5em;
+}
+
+h1 { font-size: 2.6rem; font-style: italic; }
+h2 { font-size: 2rem; margin-top: 2rem; }
+h3 { font-size: 1.5rem; margin-top: 1.5rem; }
+h4 { font-size: 1.2rem; margin-top: 1.2rem; }
+
+p {
+  margin-bottom: 1.2em;
+}
+
+/* Drop cap on first paragraph of each section */
+.section > .prose > p:first-of-type::first-letter,
+.section-hook > p:first-of-type::first-letter {
+  font-family: var(--font-display);
+  font-size: 3.6em;
+  font-weight: 700;
+  float: left;
+  line-height: 0.8;
+  margin-right: 0.08em;
+  margin-top: 0.1em;
+  color: var(--ink);
+}
+
+strong {
+  font-weight: 700;
+  color: var(--ink);
+}
+
+em {
+  font-style: italic;
+}
+
+a {
+  color: var(--coin-b);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+a:hover {
+  color: var(--coin-a);
+}
+
+ul, ol {
+  padding-left: 1.5em;
+  margin-bottom: 1.2em;
+}
+
+li {
+  margin-bottom: 0.3em;
+}
+
+code {
+  font-family: var(--font-mono);
+  font-size: 0.88em;
+  background: var(--paper-soft);
+  padding: 0.1em 0.35em;
+  border-radius: 3px;
+  border: 1px solid var(--rule);
+}
+
+pre {
+  font-family: var(--font-mono);
+  font-size: 0.88em;
+  background: var(--paper-soft);
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  padding: 1.2rem 1.4rem;
+  overflow-x: auto;
+  line-height: 1.55;
+  margin: 1.5em 0;
+}
+
+pre code {
+  background: none;
+  border: none;
+  padding: 0;
+  font-size: 1em;
+}
+
+blockquote {
+  border-left: 3px solid var(--amber);
+  padding-left: 1.2em;
+  margin: 1.2em 0;
+  color: var(--ink-soft);
+  font-style: italic;
+}
+
+/* KaTeX display math spacing */
+.katex-display {
+  margin: 1.4em 0;
+  overflow-x: auto;
+}
+
+/* Data tables */
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5em 0;
+  font-size: 0.95em;
+}
+
+.data-table th {
+  font-family: var(--font-display);
+  font-weight: 600;
+  text-align: center;
+  padding: 0.5em 0.75em;
+  border-bottom: 2px solid var(--ink);
+  white-space: nowrap;
+}
+
+.data-table td {
+  padding: 0.45em 0.75em;
+  text-align: center;
+  border-bottom: 1px solid var(--rule);
+  font-family: var(--font-mono);
+  font-size: 0.9em;
+}
+
+.data-table tr:nth-child(even) td {
+  background: var(--paper-soft);
+}
+
+.data-table tr:hover td {
+  background: color-mix(in srgb, var(--amber) 12%, var(--paper));
+}
+
+.data-table td:first-child {
+  font-weight: 600;
+}
+
+/* Section numbers */
+.section-number {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--ink-soft);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 0.5rem;
+}
+
+/* Separators */
+hr.section-rule {
+  border: none;
+  border-top: 1px solid var(--rule);
+  margin: 3rem 0;
+}
