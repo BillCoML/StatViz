@@ -1,0 +1,101 @@
+/* ELBO & VI lesson-local accent tokens. */
+
+:root {
+  --evidence:    #6b3a8c;   /* log p(x) — deep purple */
+  --elbo:        #2c5f8d;   /* ELBO — slate blue */
+  --kl-gap:      #b8651a;   /* KL gap — burnt sienna */
+  --posterior:   #3a7058;   /* true posterior — forest green */
+  --variational: #c87f3b;   /* variational q — ochre */
+}
+
+/* Hook */
+.elbo-hook {
+  text-align: center;
+  padding: 5rem 1rem;
+  max-width: var(--prose-width);
+  margin: 0 auto;
+}
+
+.elbo-hook__title {
+  font-family: var(--font-display);
+  font-size: 3rem;
+  font-style: italic;
+  margin-bottom: 1.5rem;
+  line-height: 1.15;
+}
+
+.elbo-hook__cta { margin-top: 2rem; }
+
+/* Identity decomposition bar used in §3 and viz */
+.elbo-bar {
+  display: flex;
+  height: 24px;
+  border-radius: 4px;
+  overflow: hidden;
+  font-family: var(--font-mono);
+  font-size: 0.78em;
+}
+
+.elbo-bar__elbo    { background: var(--elbo);    flex-shrink: 0; }
+.elbo-bar__kl-gap  { background: var(--kl-gap);  flex-shrink: 0; }
+
+/* Two-panel viz layout */
+.elbo-two-panel {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+@media (max-width: 720px) { .elbo-two-panel { grid-template-columns: 1fr; } }
+
+.elbo-panel {
+  background: var(--paper-soft);
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  padding: 0.75rem;
+}
+
+.elbo-readout {
+  font-family: var(--font-mono);
+  font-size: 0.85em;
+  color: var(--ink-soft);
+  margin-top: 0.5rem;
+}
+.elbo-readout strong { color: var(--ink); }
+.elbo-readout--evidence { color: var(--evidence); font-weight: 600; }
+.elbo-readout--elbo     { color: var(--elbo);     font-weight: 600; }
+.elbo-readout--kl-gap   { color: var(--kl-gap);   font-weight: 600; }
+
+.elbo-buttons { display: flex; flex-wrap: wrap; gap: 0.4em; margin-top: 0.75rem; }
+
+/* EM trajectory chart */
+.em-trajectory { display: flex; flex-direction: column; gap: 0.5rem; }
+.em-trajectory__legend {
+  display: flex;
+  gap: 1.5em;
+  font-family: var(--font-mono);
+  font-size: 0.82em;
+  color: var(--ink-soft);
+}
+.em-trajectory__swatch {
+  display: inline-block;
+  width: 14px;
+  height: 3px;
+  border-radius: 2px;
+  vertical-align: middle;
+  margin-right: 0.3em;
+}
+
+/* Bimodal ELBO landscape */
+.bimodal-elbo { display: flex; flex-direction: column; gap: 1rem; }
+.bimodal-elbo__target {
+  background: var(--paper-soft);
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  padding: 0.75rem;
+}
+.bimodal-elbo__pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+@media (max-width: 720px) { .bimodal-elbo__pair { grid-template-columns: 1fr; } }

@@ -1,6 +1,7 @@
 import type { LessonId, LessonMeta, Prerequisite } from './types';
-import { meta as emMeta } from '@lessons/em/meta';
-import { meta as klMeta } from '@lessons/kl-jensen/meta';
+import { meta as emMeta }   from '@lessons/em/meta';
+import { meta as klMeta }   from '@lessons/kl-jensen/meta';
+import { meta as elboMeta } from '@lessons/elbo-vi/meta';
 
 const stub = (id: LessonId, title: string, subtitle: string, tier: 1 | 2 | 3 | 4,
               difficulty: 1 | 2 | 3 | 4 | 5, estimatedHours: number,
@@ -145,7 +146,7 @@ const langevinStub: LessonMeta = stub(
 export const CATALOG: Record<LessonId, LessonMeta> = {
   'kl-jensen':         klMeta,
   'em':                emMeta,
-  'elbo-vi':           elboStub,
+  'elbo-vi':           elboMeta,
   'gaussian-cookbook': gaussianCookbookStub,
   'vae':               vaeStub,
   'score-matching':    scoreMatchingStub,

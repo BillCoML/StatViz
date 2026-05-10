@@ -15,9 +15,10 @@ export default defineConfig({
   build: {
     rollupOptions: {
       input: {
-        roadmap: resolve(__dirname, 'index.html'),
-        em: resolve(__dirname, 'lessons/em/index.html'),
+        roadmap:  resolve(__dirname, 'index.html'),
+        em:       resolve(__dirname, 'lessons/em/index.html'),
         klJensen: resolve(__dirname, 'lessons/kl-jensen/index.html'),
+        elboVi:   resolve(__dirname, 'lessons/elbo-vi/index.html'),
       },
     },
   },
