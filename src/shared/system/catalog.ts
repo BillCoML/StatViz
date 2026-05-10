@@ -17,7 +17,7 @@ const stub = (id: LessonId, title: string, subtitle: string, tier: 1 | 2 | 3 | 4
   path,
 });
 
-const elboStub: LessonMeta = stub(
+const _elboStub: LessonMeta = stub(
   'elbo-vi',
   'ELBO & Variational Inference',
   'Turning intractable posteriors into optimization problems.',

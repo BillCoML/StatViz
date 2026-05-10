@@ -1,4 +1,4 @@
-import { renderMath, callout, crosslinkBack } from '@shared/ui';
+import { renderMath, crosslinkBack } from '@shared/ui';
 import { mountELBOOptimization } from '../viz/elbo-optimization';
 import { mountBimodalELBO } from '../viz/bimodal-elbo';
 
