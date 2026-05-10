@@ -1,4 +1,5 @@
 import { renderMath, callout, crosslinkBack } from '@shared/ui';
+import { mountEMTrajectory } from '../viz/em-trajectory';
 
 export function mount(container: HTMLElement): void {
   const sec = document.createElement('section');
@@ -113,4 +114,5 @@ export function mount(container: HTMLElement): void {
   `;
   container.appendChild(sec);
   renderMath(sec);
+  mountEMTrajectory(sec.querySelector('#viz-em-trajectory') as HTMLElement);
 }

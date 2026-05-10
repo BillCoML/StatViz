@@ -1,4 +1,6 @@
 import { renderMath, callout, crosslinkBack } from '@shared/ui';
+import { mountELBOOptimization } from '../viz/elbo-optimization';
+import { mountBimodalELBO } from '../viz/bimodal-elbo';
 
 export function mount(container: HTMLElement): void {
   const sec = document.createElement('section');
@@ -124,4 +126,6 @@ export function mount(container: HTMLElement): void {
   `;
   container.appendChild(sec);
   renderMath(sec);
+  mountELBOOptimization(sec.querySelector('#viz-elbo-optimization') as HTMLElement);
+  mountBimodalELBO(sec.querySelector('#viz-bimodal-elbo') as HTMLElement);
 }

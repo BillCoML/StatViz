@@ -1,4 +1,5 @@
 import { renderMath, callout, crosslinkBack } from '@shared/ui';
+import { mountELBOKLDecomposition } from '../viz/elbo-kl-decomposition';
 
 export function mount(container: HTMLElement): void {
   const sec = document.createElement('section');
@@ -81,4 +82,5 @@ export function mount(container: HTMLElement): void {
   `;
   container.appendChild(sec);
   renderMath(sec);
+  mountELBOKLDecomposition(sec.querySelector('#viz-elbo-kl-decomp') as HTMLElement);
 }
