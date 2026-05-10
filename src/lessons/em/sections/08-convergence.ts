@@ -1,7 +1,7 @@
 import { renderMath } from '@shared/ui';
 import { callout } from '@shared/ui';
 import { proofToggle } from '@shared/ui';
-import { crosslinkBack } from '@shared/ui';
+import { crosslinkBack, crosslinkForward } from '@shared/ui';
 import { mountMonotonicityDemo } from '../viz/monotonicity-demo';
 
 export function mount(container: HTMLElement): void {
@@ -101,6 +101,17 @@ export function mount(container: HTMLElement): void {
       always non-negative.</p>
     </div>
     <div id="viz-monotonicity" class="viz-wide"></div>
+    ${crosslinkForward({
+      toLesson: 'elbo-vi',
+      toAnchor: 'em-as-elbo-ascent',
+      toAnchorLabel: '7',
+      body: `<p>The ELBO &amp; Variational Inference lesson re-derives this monotonicity
+        theorem in one paragraph using ELBO machinery. The argument is: coordinate ascent
+        on $\\mathcal{L}(q, \\theta)$ never decreases $\\mathcal{L}$; the E-step makes the
+        bound tight ($\\mathcal{L} = \\log p_\\theta(x)$); therefore $\\log p_\\theta(x)$
+        is non-decreasing. It's a strictly cleaner proof that also generalizes to
+        approximate E-steps (variational EM).</p>`,
+    })}
     ${callout('warning', 'What EM does NOT guarantee',
     `<p>Monotonicity guarantees convergence to a <em>local</em> maximum or saddle point —
     not necessarily the <em>global</em> maximum. For our two-coin problem, EM reliably
