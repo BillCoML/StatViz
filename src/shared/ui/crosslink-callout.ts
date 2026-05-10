@@ -1,4 +1,5 @@
 import { CATALOG } from '../system/catalog';
+import { resolvePath } from '../system';
 import type { LessonId } from '../system/types';
 
 export type CrosslinkType = 'back' | 'forward' | 'sidebar';
@@ -25,7 +26,7 @@ export function crosslinkCallout(opts: CrosslinkCalloutOptions): string {
   const target = CATALOG[toLesson];
   const m = META[type];
   const planned = target.status === 'planned';
-  const href = toAnchor ? `${target.path}#${toAnchor}` : target.path;
+  const href = toAnchor ? `${resolvePath(target.path)}#${toAnchor}` : resolvePath(target.path);
   const sectionSuffix = toAnchorLabel ? ` §${toAnchorLabel}` : '';
   const linkClass = planned ? 'crosslink__link crosslink__link--dimmed' : 'crosslink__link';
   const linkContent = planned

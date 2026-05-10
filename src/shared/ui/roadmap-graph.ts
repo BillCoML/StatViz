@@ -1,5 +1,5 @@
 import * as d3 from 'd3';
-import { CATALOG, GOLDEN_THREAD } from '@shared/system';
+import { CATALOG, GOLDEN_THREAD, resolvePath } from '@shared/system';
 import type { LessonId } from '@shared/system';
 import { NODE_POSITIONS, COLUMN_LABELS, SIDE_QUESTS_BAND, DESIGN_BOUNDS } from './roadmap-graph-layout';
 
@@ -163,7 +163,7 @@ export function renderRoadmap(host: HTMLElement, opts: RoadmapRenderOptions): vo
         .on('click', () => opts.onNodeClick!(pos.id));
     } else if (meta.status !== 'planned') {
       g.style('cursor', 'pointer')
-        .on('click', () => { window.location.href = meta.path; });
+        .on('click', () => { window.location.href = resolvePath(meta.path); });
     }
   }
 

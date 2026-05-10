@@ -1,4 +1,4 @@
-import { CATALOG } from '@shared/system';
+import { CATALOG, resolvePath } from '@shared/system';
 import type { LessonId } from '@shared/system';
 
 const STATUS_BADGE: Record<string, string> = { built: '✓', wip: '⏳', planned: '○' };
@@ -19,18 +19,18 @@ export function mountSidePanel(host: HTMLElement) {
     const prereqChips = m.prerequisites.length
       ? m.prerequisites.map(p => {
           const t = CATALOG[p.id];
-          return `<a class="side-panel__chip" href="${t.path}">${STATUS_BADGE[t.status]} ${t.title}${p.strength === 'recommended' ? ' (recommended)' : ''}</a>`;
+          return `<a class="side-panel__chip" href="${resolvePath(t.path)}">${STATUS_BADGE[t.status]} ${t.title}${p.strength === 'recommended' ? ' (recommended)' : ''}</a>`;
         }).join('')
       : '<span class="side-panel__none">Foundational — no prerequisites.</span>';
     const usedByChips = m.alsoUsedBy.length
       ? m.alsoUsedBy.map(id => {
           const t = CATALOG[id];
-          return `<a class="side-panel__chip" href="${t.path}">${STATUS_BADGE[t.status]} ${t.title}</a>`;
+          return `<a class="side-panel__chip" href="${resolvePath(t.path)}">${STATUS_BADGE[t.status]} ${t.title}</a>`;
         }).join('')
       : '<span class="side-panel__none">Not yet used downstream.</span>';
     const anchorList = Object.entries(m.exportedAnchors).length
       ? Object.entries(m.exportedAnchors).map(([anc, label]) =>
-          `<li><a href="${m.path}#${anc}">${label}</a></li>`).join('')
+          `<li><a href="${resolvePath(m.path)}#${anc}">${label}</a></li>`).join('')
       : '<li class="side-panel__none">No exported anchors yet.</li>';
 
     host.classList.add('side-panel--open');
@@ -54,7 +54,7 @@ export function mountSidePanel(host: HTMLElement) {
         <div class="side-panel__actions">
           ${planned
             ? `<span class="cta-btn" style="opacity: 0.5; cursor: not-allowed;">Coming soon</span>`
-            : `<a class="cta-btn" href="${m.path}">Open lesson →</a>`}
+            : `<a class="cta-btn" href="${resolvePath(m.path)}">Open lesson →</a>`}
         </div>
       </div>
     `;

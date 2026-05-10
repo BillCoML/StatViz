@@ -1,4 +1,5 @@
 import { CATALOG } from '../system/catalog';
+import { resolvePath } from '../system';
 import type { LessonId, LessonStatus, Prerequisite } from '../system/types';
 
 export interface PrereqStripOptions {
@@ -29,7 +30,7 @@ export function mountPrereqStrip(container: HTMLElement, opts: PrereqStripOption
     const icon = STATUS_ICON[target.status];
     const recommended = p.strength === 'recommended' ? ' <span class="prereq-strip__suffix">(recommended)</span>' : '';
     const dimmed = target.status === 'planned' ? ' prereq-strip__chip--dimmed' : '';
-    const href = p.anchor ? `${target.path}#${p.anchor}` : target.path;
+    const href = p.anchor ? `${resolvePath(target.path)}#${p.anchor}` : resolvePath(target.path);
     const reason = reasons[p.id]
       ?? (target.status === 'planned'
             ? `This prerequisite isn't built yet. Background: ${target.description}`
