@@ -132,7 +132,7 @@ export function mountELBOKLDecomposition(container: HTMLElement): void {
 
   const slider = container.querySelector('#phi-slider') as HTMLInputElement;
   const phiVal = container.querySelector('#phi-val') as HTMLElement;
-  const _rLogpx = container.querySelector('#r-logpx') as HTMLElement;
+  container.querySelector('#r-logpx');  // display-only, not updated programmatically
   const rElbo  = container.querySelector('#r-elbo') as HTMLElement;
   const rKl    = container.querySelector('#r-kl') as HTMLElement;
   const rSum   = container.querySelector('#r-sum') as HTMLElement;

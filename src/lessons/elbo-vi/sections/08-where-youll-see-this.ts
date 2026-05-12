@@ -1,4 +1,4 @@
-import { renderMath, mountRoadmapMini } from '@shared/ui';
+import { renderMath, mountRoadmapMini, crosslinkForward } from '@shared/ui';
 
 export function mount(container: HTMLElement): void {
   const sec = document.createElement('section');
@@ -44,6 +44,24 @@ export function mount(container: HTMLElement): void {
           multiple $q$-samples.</li>
       </ul>
     </div>
+
+    ${crosslinkForward({
+      toLesson: 'gaussian-cookbook',
+      toAnchor: 'kl-mvn-diag',
+      toAnchorLabel: '3',
+      body: `<p>The KL regularizer in the VAE ELBO — $D_{\\mathrm{KL}}(q_\\phi(z \\mid x) \\| p(z))$ with
+        $q_\\phi$ diagonal Gaussian and $p(z) = \\mathcal{N}(0, I)$ — has a closed form derived
+        in the Gaussian Cookbook. It's the identity every VAE implementation uses as a single
+        line of the loss.</p>`,
+    })}
+
+    ${crosslinkForward({
+      toLesson: 'vae',
+      toAnchor: 'vae-objective',
+      body: `<p>Form 2 of the ELBO — reconstruction minus KL regularizer — is the VAE training
+        loss verbatim. The encoder amortizes $q_\\phi(z \\mid x)$ across data points; the
+        reparameterization trick makes the reconstruction term differentiable.</p>`,
+    })}
 
     <div id="roadmap-mini"></div>
   `;

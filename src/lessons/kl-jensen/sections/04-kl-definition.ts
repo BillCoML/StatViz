@@ -1,4 +1,4 @@
-import { renderMath } from '@shared/ui';
+import { renderMath, crosslinkForward } from '@shared/ui';
 import { mountKLCalculator } from '../viz/kl-calculator';
 
 export function mount(container: HTMLElement): void {
@@ -89,6 +89,16 @@ export function mount(container: HTMLElement): void {
     </div>
 
     <div id="viz-kl-calculator" class="viz-wide"></div>
+
+    ${crosslinkForward({
+      toLesson: 'gaussian-cookbook',
+      toAnchor: 'kl-mvn',
+      toAnchorLabel: '3',
+      body: `<p>The multivariate generalization of this formula — replacing
+        $\\sigma_1, \\sigma_2$ with $\\Sigma_1, \\Sigma_2$ and adding a trace term —
+        is the closed form used everywhere in VAE and DDPM. The derivation follows
+        the same expectation-of-quadratic-form strategy.</p>`,
+    })}
   `;
 
   container.appendChild(sec);

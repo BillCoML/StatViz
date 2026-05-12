@@ -1,0 +1,133 @@
+/* Gaussian Cookbook lesson-local accent tokens */
+
+:root {
+  --gauss-p:    #b8651a;   /* "p" distribution — burnt sienna (matches KL lesson) */
+  --gauss-q:    #1f6f8c;   /* "q" distribution — deep teal (matches KL lesson) */
+  --gauss-grid: #d4ccbf;   /* contour grid lines */
+  --accent-ev:  #2c5f8d;   /* eigenvector arrows */
+}
+
+/* Hook */
+.gauss-hook {
+  text-align: center;
+  padding: 5rem 1rem;
+  max-width: var(--prose-width);
+  margin: 0 auto;
+}
+
+.gauss-hook__title {
+  font-family: var(--font-display);
+  font-size: 3rem;
+  font-style: italic;
+  margin-bottom: 1.5rem;
+  line-height: 1.15;
+}
+
+/* Jump-to table */
+.jump-table {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+  margin: 1.5rem 0;
+  max-width: 580px;
+}
+
+@media (max-width: 520px) {
+  .jump-table { grid-template-columns: 1fr; }
+}
+
+.jump-chip {
+  display: block;
+  padding: 0.75rem 1rem;
+  background: var(--paper-soft);
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  text-decoration: none;
+  color: var(--ink);
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.jump-chip:hover {
+  border-color: var(--amber);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+
+.jump-chip__title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.95em;
+  margin-bottom: 0.2rem;
+}
+
+.jump-chip__desc {
+  font-size: 0.82em;
+  color: var(--ink-soft);
+  font-family: var(--font-serif);
+}
+
+/* Visualization layouts */
+.gauss-viz-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 1rem;
+  align-items: start;
+}
+
+@media (max-width: 640px) {
+  .gauss-viz-row { grid-template-columns: 1fr; }
+}
+
+.gauss-readout-panel {
+  background: var(--paper-soft);
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  padding: 0.75rem;
+  min-width: 160px;
+  font-family: var(--font-mono);
+  font-size: 0.82em;
+  line-height: 1.7;
+}
+
+.gauss-readout-panel strong {
+  color: var(--ink);
+}
+
+.gauss-viz-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin-top: 0.75rem;
+}
+
+.gauss-kl-terms {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.2rem 0.75rem;
+  font-family: var(--font-mono);
+  font-size: 0.8em;
+}
+
+.gauss-kl-terms .term-label { color: var(--ink-soft); }
+.gauss-kl-terms .term-val   { color: var(--ink); font-weight: 600; text-align: right; }
+
+.gauss-two-panel {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+@media (max-width: 640px) { .gauss-two-panel { grid-template-columns: 1fr; } }
+
+/* Slice viz */
+.gauss-slice-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.gauss-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4em;
+  margin-top: 0.5rem;
+}

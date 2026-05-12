@@ -1,7 +1,9 @@
 import type { LessonId, LessonMeta, Prerequisite } from './types';
-import { meta as emMeta }   from '@lessons/em/meta';
-import { meta as klMeta }   from '@lessons/kl-jensen/meta';
-import { meta as elboMeta } from '@lessons/elbo-vi/meta';
+import { meta as emMeta }     from '@lessons/em/meta';
+import { meta as klMeta }     from '@lessons/kl-jensen/meta';
+import { meta as elboMeta }   from '@lessons/elbo-vi/meta';
+import { meta as gaussianMeta } from '@lessons/gaussian-cookbook/meta';
+import { meta as vaeMeta }      from '@lessons/vae/meta';
 
 const stub = (id: LessonId, title: string, subtitle: string, tier: 1 | 2 | 3 | 4,
               difficulty: 1 | 2 | 3 | 4 | 5, estimatedHours: number,
@@ -17,51 +19,6 @@ const stub = (id: LessonId, title: string, subtitle: string, tier: 1 | 2 | 3 | 4
   path,
 });
 
-const _elboStub: LessonMeta = stub(
-  'elbo-vi',
-  'ELBO & Variational Inference',
-  'Turning intractable posteriors into optimization problems.',
-  1, 3, 3,
-  'The evidence lower bound, the reverse-KL view of variational inference, ' +
-  'and how minimizing reverse KL becomes maximizing the ELBO.',
-  '/lessons/elbo-vi/',
-  [
-    { id: 'kl-jensen', strength: 'required' },
-    { id: 'gaussian-cookbook', strength: 'recommended' },
-  ],
-  ['vae'],
-  ['vae', 'ddpm'],
-);
-
-const gaussianCookbookStub: LessonMeta = stub(
-  'gaussian-cookbook',
-  'Gaussian Identities (Cookbook)',
-  'The Gaussian closures and conditioning rules used everywhere downstream.',
-  1, 2, 2,
-  'Closed-form identities for Gaussians: marginals, conditionals, products, ' +
-  'and KL — the building blocks of every Gaussian-latent variational model.',
-  '/lessons/gaussian-cookbook/',
-  [],
-  ['elbo-vi', 'vae'],
-  ['elbo-vi', 'vae', 'score-matching', 'ddpm'],
-);
-
-const vaeStub: LessonMeta = stub(
-  'vae',
-  'Variational Autoencoders',
-  'A neural network amortizes the variational posterior.',
-  3, 3, 3,
-  'The VAE objective: reconstruction + KL regularizer. The reparameterization ' +
-  'trick. Why the encoder is amortized inference.',
-  '/lessons/vae/',
-  [
-    { id: 'elbo-vi', strength: 'required' },
-    { id: 'gaussian-cookbook', strength: 'required' },
-    { id: 'em', strength: 'recommended' },
-  ],
-  ['score-matching', 'ddpm'],
-  ['ddpm'],
-);
 
 const scoreMatchingStub: LessonMeta = stub(
   'score-matching',
@@ -147,8 +104,8 @@ export const CATALOG: Record<LessonId, LessonMeta> = {
   'kl-jensen':         klMeta,
   'em':                emMeta,
   'elbo-vi':           elboMeta,
-  'gaussian-cookbook': gaussianCookbookStub,
-  'vae':               vaeStub,
+  'gaussian-cookbook': gaussianMeta,
+  'vae':               vaeMeta,
   'score-matching':    scoreMatchingStub,
   'ddpm':              ddpmStub,
   'normalizing-flows': normalizingFlowsStub,
