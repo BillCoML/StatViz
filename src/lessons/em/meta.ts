@@ -12,7 +12,7 @@ export const meta: LessonMeta = {
     { id: 'kl-jensen', strength: 'recommended', anchor: 'gibbs-inequality' },
   ],
   recommendedNext: ['elbo-vi', 'vae'],
-  alsoUsedBy: ['vae', 'score-matching'],
+  alsoUsedBy: ['vae', 'score-matching', 'ddpm'],
   description:
     'The EM algorithm finds maximum-likelihood estimates when there is ' +
     'missing or latent data, by alternating between an E-step (softly ' +

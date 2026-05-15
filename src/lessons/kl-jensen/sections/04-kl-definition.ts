@@ -100,6 +100,15 @@ export function mount(container: HTMLElement): void {
         the same expectation-of-quadratic-form strategy.</p>`,
     })}
 
+    ${crosslinkForward({
+      toLesson: 'ddpm',
+      toAnchor: 'vlb',
+      body: `<p>Every $L_{t-1}$ term in the DDPM variational bound is a KL between two
+        Gaussians. The closed-form formula above (and its multivariate generalization)
+        is exactly what reduces each step's loss to MSE between predicted and target
+        means — the foundation of $L_{\\text{simple}}$.</p>`,
+    })}
+
     ${crosslinkSidebar({
       toLesson: 'score-matching',
       toAnchor: 'fisher-divergence',

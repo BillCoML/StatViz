@@ -5,6 +5,7 @@ import { meta as elboMeta }   from '@lessons/elbo-vi/meta';
 import { meta as gaussianMeta } from '@lessons/gaussian-cookbook/meta';
 import { meta as vaeMeta }      from '@lessons/vae/meta';
 import { meta as scoreMatchingMeta } from '@lessons/score-matching/meta';
+import { meta as ddpmMeta }          from '@lessons/ddpm/meta';
 
 const stub = (id: LessonId, title: string, subtitle: string, tier: 1 | 2 | 3 | 4,
               difficulty: 1 | 2 | 3 | 4 | 5, estimatedHours: number,
@@ -21,21 +22,6 @@ const stub = (id: LessonId, title: string, subtitle: string, tier: 1 | 2 | 3 | 4
 });
 
 
-
-const ddpmStub: LessonMeta = stub(
-  'ddpm',
-  'Denoising Diffusion Probabilistic Models',
-  'The destination paper.',
-  4, 5, 5,
-  'The Ho/Jain/Abbeel 2020 paper read in full. The forward noising chain, the ' +
-  'reverse denoising chain, the simplified training objective, sampling.',
-  '/lessons/ddpm/',
-  [
-    { id: 'vae', strength: 'required' },
-    { id: 'score-matching', strength: 'required' },
-    { id: 'gaussian-cookbook', strength: 'required' },
-  ],
-);
 
 const normalizingFlowsStub: LessonMeta = stub(
   'normalizing-flows',
@@ -93,7 +79,7 @@ export const CATALOG: Record<LessonId, LessonMeta> = {
   'gaussian-cookbook': gaussianMeta,
   'vae':               vaeMeta,
   'score-matching':    scoreMatchingMeta,
-  'ddpm':              ddpmStub,
+  'ddpm':              ddpmMeta,
   'normalizing-flows': normalizingFlowsStub,
   'mcmc-foundations':  mcmcStub,
   'metropolis-gibbs':  mhGibbsStub,

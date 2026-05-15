@@ -22,6 +22,7 @@ export default defineConfig({
         gaussianCookbook: resolve(__dirname, 'lessons/gaussian-cookbook/index.html'),
         vae:              resolve(__dirname, 'lessons/vae/index.html'),
         scoreMatching:    resolve(__dirname, 'lessons/score-matching/index.html'),
+        ddpm:             resolve(__dirname, 'lessons/ddpm/index.html'),
       },
     },
   },

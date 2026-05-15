@@ -63,6 +63,15 @@ export function mount(container: HTMLElement): void {
         reparameterization trick makes the reconstruction term differentiable.</p>`,
     })}
 
+    ${crosslinkForward({
+      toLesson: 'ddpm',
+      toAnchor: 'vlb',
+      body: `<p>DDPM extends Form 1 of the ELBO to a $T$-step hierarchical setting with a
+        frozen Gaussian encoder. The decomposition into $L_T + \\sum L_{t-1} + L_0$ — a
+        sum of closed-form Gaussian KLs — is exactly the variance-reduced ELBO of this
+        lesson, run on a Markov chain.</p>`,
+    })}
+
     <div id="roadmap-mini"></div>
   `;
   container.appendChild(sec);
