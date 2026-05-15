@@ -11,6 +11,14 @@ import { mount as mountLangevin } from './sections/06-langevin-dynamics';
 import { mount as mountAnnealed } from './sections/07-annealed-langevin';
 import { mount as mountWhere }    from './sections/08-where-youll-see-this';
 
+import { mount as mountScoreField } from './viz/score-field-explorer';
+import { mount as mountNormIrrel  } from './viz/normalization-irrelevance';
+import { mount as mountISMDeriv   } from './viz/ism-derivation';
+import { mount as mountNSS        } from './viz/noise-smoothed-score';
+import { mount as mountDSMTarget  } from './viz/dsm-target';
+import { mount as mountLangSamp   } from './viz/langevin-sampler';
+import { mount as mountAnneal     } from './viz/annealed-langevin';
+
 const SECTION_LABELS = [
   'Hook',
   'The Score Function',
@@ -35,6 +43,16 @@ mountDSM(app);
 mountLangevin(app);
 mountAnnealed(app);
 mountWhere(app);
+
+// Wire visualizations into their placeholder divs
+const pick = (id: string) => document.getElementById(id);
+if (pick('viz-score-field-explorer')) mountScoreField(pick('viz-score-field-explorer')!);
+if (pick('viz-normalization-irrelevance')) mountNormIrrel(pick('viz-normalization-irrelevance')!);
+if (pick('viz-ism-derivation'))  mountISMDeriv(pick('viz-ism-derivation')!);
+if (pick('viz-noise-smoothed-score')) mountNSS(pick('viz-noise-smoothed-score')!);
+if (pick('viz-dsm-target'))      mountDSMTarget(pick('viz-dsm-target')!);
+if (pick('viz-langevin-sampler')) mountLangSamp(pick('viz-langevin-sampler')!);
+if (pick('viz-annealed-langevin')) mountAnneal(pick('viz-annealed-langevin')!);
 
 mountNavSidebar(sidebar as HTMLElement, hamburger as HTMLElement, { labels: SECTION_LABELS });
 mountProgressBar(progressBar as HTMLElement);
