@@ -1,4 +1,4 @@
-import { renderMath, crosslinkForward } from '@shared/ui';
+import { renderMath, crosslinkForward, crosslinkSidebar } from '@shared/ui';
 import { mountKLCalculator } from '../viz/kl-calculator';
 
 export function mount(container: HTMLElement): void {
@@ -98,6 +98,16 @@ export function mount(container: HTMLElement): void {
         $\\sigma_1, \\sigma_2$ with $\\Sigma_1, \\Sigma_2$ and adding a trace term —
         is the closed form used everywhere in VAE and DDPM. The derivation follows
         the same expectation-of-quadratic-form strategy.</p>`,
+    })}
+
+    ${crosslinkSidebar({
+      toLesson: 'score-matching',
+      toAnchor: 'fisher-divergence',
+      toAnchorLabel: '3 — Fisher Divergence',
+      body: `<p>Fisher divergence is a relative of KL — both measure the mismatch
+        between two distributions, both are non-negative. De Bruijn's identity makes
+        the connection exact: Fisher divergence is the derivative of KL with respect
+        to Gaussian noise smoothing. See Score Matching §3 for details.</p>`,
     })}
   `;
 

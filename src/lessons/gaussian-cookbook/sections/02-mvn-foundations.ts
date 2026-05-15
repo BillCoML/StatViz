@@ -1,4 +1,4 @@
-import { renderMath } from '@shared/ui';
+import { renderMath, crosslinkForward } from '@shared/ui';
 import { mountMVNExplorer } from '../viz/mvn-explorer';
 
 export function mount(container: HTMLElement): void {
@@ -48,6 +48,16 @@ export function mount(container: HTMLElement): void {
     </div>
 
     <div id="viz-mvn-explorer" class="viz-wide"></div>
+
+    ${crosslinkForward({
+      toLesson: 'score-matching',
+      toAnchor: 'score-definition',
+      toAnchorLabel: '2 — The Score Function',
+      body: `<p>The score function $s(x) = \\nabla_x \\log p(x)$ of a multivariate
+        Gaussian is $-\\Sigma^{-1}(x - \\mu)$ — a direct consequence of the density
+        formula above. Score Matching §2 derives this and builds the full score-based
+        generative modeling framework on top of it.</p>`,
+    })}
   `;
   container.appendChild(sec);
   renderMath(sec);

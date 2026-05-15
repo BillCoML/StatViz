@@ -72,6 +72,17 @@ export function mount(container: HTMLElement): void {
       body: `<p>Noise is added via $x_t = \\sqrt{\\bar\\alpha_t} x_0 + \\sqrt{1 - \\bar\\alpha_t} \\varepsilon$,
         which is the reparameterization trick applied to the diffusion forward process.</p>`,
     })}
+
+    ${crosslinkForward({
+      toLesson: 'score-matching',
+      toAnchor: 'dsm',
+      toAnchorLabel: '5 — Denoising Score Matching',
+      body: `<p>The DSM construction $\\tilde{x} = x + \\sigma\\varepsilon$ is the
+        reparameterization trick: a deterministic transform of noise $\\varepsilon$ with
+        data point $x$ as the mean and $\\sigma$ as the scale. This is what makes the DSM
+        training loss differentiable end-to-end — and the key step in connecting the score
+        to the denoising objective that DDPM uses.</p>`,
+    })}
   `;
   container.appendChild(sec);
   renderMath(sec);
