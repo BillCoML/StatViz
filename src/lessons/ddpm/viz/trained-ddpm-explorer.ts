@@ -102,7 +102,9 @@ export function mount(container: HTMLElement): void {
       for (let i = 0; i < N_PARTICLES; i++) state.particles.push(gauss2(state.rng));
     } else if (mode === 'compare') {
       for (let i = 0; i < 80; i++) state.particles.push(gauss2(state.rng));
-    } else if (mode === 'forward' && state.pickedX0) {
+    } else if (mode === 'forward') {
+      // Pre-pick a sensible default x_0 so the canvas shows something immediately.
+      if (!state.pickedX0) state.pickedX0 = [2, 2];
       const eps = gauss2(state.rng);
       state.particles = [forwardSample(state.pickedX0, state.t, eps, browserSched)];
     }
@@ -116,7 +118,17 @@ export function mount(container: HTMLElement): void {
     if (state.rafId) cancelAnimationFrame(state.rafId);
     state.rafId = null;
     state.scoreCache = null;
+    // Pre-fill Interpolation picks with sensible defaults so it's not blocked on clicks.
+    if (m === 'interp') {
+      if (!state.pickedX0)  state.pickedX0  = [2,  2];
+      if (!state.pickedX0B) state.pickedX0B = [-2, -2];
+    }
     initParticles(m);
+    // If interp mode entered with both picks set, kick off the heavy compute deferred
+    // so the canvas paints first.
+    if (m === 'interp' && state.pickedX0 && state.pickedX0B) {
+      setTimeout(() => { if (state.mode === 'interp') runInterpolation(); }, 30);
+    }
     tSlider.value = String(state.t);
     tVal.textContent = String(state.t);
     tabs.forEach(b => b.classList.toggle('ddpm-tab--active', b.dataset.mode === m));
@@ -273,12 +285,36 @@ export function mount(container: HTMLElement): void {
   }
 
   function renderCompare() {
-    if (!state.weights) return;
+    // Repaint background so axis lines from render() don't bleed through.
+    ctx.fillStyle = 'var(--paper, #fafaf6)';
+    ctx.fillRect(0, 0, W, H);
+
+    if (!state.weights) {
+      ctx.fillStyle = '#1c1c1c';
+      ctx.font = '14px Fraunces, serif';
+      ctx.fillText('Loading trained model…', 24, H / 2);
+      return;
+    }
     const w = state.weights;
     const panelW = (W - 80) / 3;
     const labels = ['DDPM', 'VAE-like', 'Score Matching'];
 
     if ((state as any)._cachedSamples == null) {
+      // Show a "computing" placard, then defer the heavy chain so the placard paints.
+      ctx.fillStyle = '#1c1c1c';
+      ctx.font = '14px Fraunces, serif';
+      ctx.fillText('Computing 80 DDPM samples (100 steps each)…', 24, H / 2);
+      status.textContent = 'Comparison — generating samples, please wait…';
+      if (!(state as any)._compareScheduled) {
+        (state as any)._compareScheduled = true;
+        setTimeout(() => {
+          (state as any)._compareScheduled = false;
+          // mark so we re-enter the block below on next render
+          if (state.mode === 'compare') render();
+        }, 30);
+        return;
+      }
+      (state as any)._compareScheduled = false;
       const ddpmS: number[][] = [];
       const smS: number[][] = [];
       const vaeS: number[][] = [];
@@ -299,6 +335,9 @@ export function mount(container: HTMLElement): void {
       }
       for (const p of ddpmS) smS.push([p[0] + 0.08 * boxMuller(state.rng), p[1] + 0.08 * boxMuller(state.rng)]);
       (state as any)._cachedSamples = { ddpmS, vaeS, smS };
+      // Re-paint after compute (was just placard).
+      ctx.fillStyle = 'var(--paper, #fafaf6)';
+      ctx.fillRect(0, 0, W, H);
     }
     const cached = (state as any)._cachedSamples;
 
