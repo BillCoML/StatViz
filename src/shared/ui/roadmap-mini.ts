@@ -1,4 +1,5 @@
 import type { LessonId } from '../system/types';
+import { resolvePath } from '../system';
 
 export interface RoadmapMiniOptions {
   currentLessonId: LessonId;
@@ -16,7 +17,7 @@ export function mountRoadmapMini(container: HTMLElement, opts: RoadmapMiniOption
     </div>
     <div class="roadmap-mini__chart"></div>
     <div class="roadmap-mini__footnote" style="font-size: 0.85rem; margin-top: 0.5em;">
-      <a href="/">Open the full roadmap →</a>
+      <a href="${resolvePath('/')}">Open the full roadmap →</a>
     </div>
   `;
   const host = container.querySelector('.roadmap-mini__chart') as HTMLElement;
