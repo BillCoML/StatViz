@@ -1,0 +1,100 @@
+/* Score Matching lesson — accent colors and lesson-local overrides */
+
+:root {
+  --score-arrow:   #2c5f8d;
+  --score-arrow-2: #c87f3b;
+  --data-point:    #b8651a;
+  --langevin-traj: #5a8a6a;
+  --noise-level:   #6b3a8c;
+  --mode:          #d4a437;
+}
+
+/* Hook section */
+.sm-hook {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: var(--section-pad);
+}
+.sm-hook__title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 700;
+  margin: 1rem 0 0.5rem;
+  color: var(--ink);
+}
+.sm-hook__subtitle {
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  color: var(--ink-soft);
+  margin-bottom: 2rem;
+  font-style: italic;
+}
+.sm-cta {
+  display: inline-block;
+  margin-top: 2rem;
+  padding: 0.6rem 1.4rem;
+  background: var(--ink);
+  color: var(--paper);
+  border-radius: 4px;
+  text-decoration: none;
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  transition: background 0.15s;
+}
+.sm-cta:hover { background: var(--score-arrow); }
+
+/* Pseudocode block */
+.sm-pseudocode {
+  background: var(--paper-alt, #f6f2eb);
+  border: 1px solid var(--ink-faint, #e0d8cc);
+  border-radius: 4px;
+  padding: 1rem 1.25rem;
+  overflow-x: auto;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  line-height: 1.6;
+}
+
+/* Fisher divergence conceptual diagram */
+.sm-two-fields {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 1rem 0 0.5rem;
+  flex-wrap: wrap;
+}
+.sm-field {
+  padding: 0.4rem 0.8rem;
+  border-radius: 4px;
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+}
+.sm-field--data  { background: color-mix(in srgb, var(--score-arrow) 15%, white); }
+.sm-field--model { background: color-mix(in srgb, var(--score-arrow-2) 15%, white); }
+.sm-field-gap {
+  font-family: var(--font-serif);
+  font-style: italic;
+  color: var(--ink-soft);
+}
+.sm-diagram-caption {
+  font-size: 0.9rem;
+  color: var(--ink-soft);
+  font-style: italic;
+  margin-top: 0.25rem;
+}
+
+/* Visualization placeholders */
+.viz-placeholder {
+  border: 2px dashed var(--ink-faint, #ccc);
+  border-radius: 6px;
+  padding: 2rem;
+  margin: 2rem 0;
+  text-align: center;
+  color: var(--ink-soft);
+}
+.viz-placeholder__label {
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  margin: 0;
+}

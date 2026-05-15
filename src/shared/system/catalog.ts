@@ -4,6 +4,7 @@ import { meta as klMeta }     from '@lessons/kl-jensen/meta';
 import { meta as elboMeta }   from '@lessons/elbo-vi/meta';
 import { meta as gaussianMeta } from '@lessons/gaussian-cookbook/meta';
 import { meta as vaeMeta }      from '@lessons/vae/meta';
+import { meta as scoreMatchingMeta } from '@lessons/score-matching/meta';
 
 const stub = (id: LessonId, title: string, subtitle: string, tier: 1 | 2 | 3 | 4,
               difficulty: 1 | 2 | 3 | 4 | 5, estimatedHours: number,
@@ -20,21 +21,6 @@ const stub = (id: LessonId, title: string, subtitle: string, tier: 1 | 2 | 3 | 4
 });
 
 
-const scoreMatchingStub: LessonMeta = stub(
-  'score-matching',
-  'Score Matching & Denoising Score Matching',
-  'Learn the gradient of the log density without ever computing the density.',
-  2, 4, 3,
-  'Score matching, denoising score matching, and the connection to noise-' +
-  'conditional density estimation that DDPM exploits.',
-  '/lessons/score-matching/',
-  [
-    { id: 'kl-jensen', strength: 'required' },
-    { id: 'gaussian-cookbook', strength: 'recommended' },
-  ],
-  ['ddpm'],
-  ['ddpm', 'langevin'],
-);
 
 const ddpmStub: LessonMeta = stub(
   'ddpm',
@@ -106,7 +92,7 @@ export const CATALOG: Record<LessonId, LessonMeta> = {
   'elbo-vi':           elboMeta,
   'gaussian-cookbook': gaussianMeta,
   'vae':               vaeMeta,
-  'score-matching':    scoreMatchingStub,
+  'score-matching':    scoreMatchingMeta,
   'ddpm':              ddpmStub,
   'normalizing-flows': normalizingFlowsStub,
   'mcmc-foundations':  mcmcStub,

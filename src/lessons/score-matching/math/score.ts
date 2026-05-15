@@ -50,7 +50,6 @@ export function scoreSmoothedGMM(
   Sigmas: number[][][],
   sigma: number,
 ): number[] {
-  const d = x.length;
   const smoothedSigmas = Sigmas.map(S =>
     S.map((row, i) => row.map((v, j) => v + (i === j ? sigma * sigma : 0)))
   );
